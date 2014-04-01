@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_plusone_small_off_client"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_settings"/>
+    <!-- <item -->
+    <!-- android:id="@+id/q" -->
+    <!-- android:showAsAction="withText" -->
+    <!-- android:title="@string/action_settings"/> -->
+
+    <!-- <item -->
+    <!-- android:id="@+id/w" -->
+    <!-- android:showAsAction="ifRoom|withText" -->
+    <!-- android:title="@string/action_settings"/> -->
+    <!-- <item -->
+    <!-- android:id="@+id/e" -->
+    <!-- android:showAsAction="ifRoom" -->
+    <!-- android:title="@string/action_settings"/> -->
+    <!-- <item -->
+    <!-- android:id="@+id/r" -->
+    <!-- android:showAsAction="ifRoom" -->
+    <!-- android:title="@string/action_settings"/> -->
+
+
+</menu>

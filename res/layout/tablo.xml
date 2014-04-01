@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/spinnerTablolar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTablolar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <LinearLayout
+            android:id="@+id/layout_kikare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Serbestlik Derecesi" />
+
+                <EditText
+                    android:id="@+id/editTxt_kikare_sd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinner_kikare_alfa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_kikare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btn_kikare_Click"
+                android:text="Hesapla" >
+            </Button>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/kikare" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_student_t"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Serbestlik Derecesi" />
+
+                <EditText
+                    android:id="@+id/editTxt_studentSd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinner_student_alfa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_student_t"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btn_student_t_Click"
+                android:text="Hesapla" >
+            </Button>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/kikare" />
+        </LinearLayout>
+        <!-- /////////////////////Tukey////////////////////// -->
+
+        <LinearLayout
+            android:id="@+id/layout_tukey01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="V" />
+
+                <EditText
+                    android:id="@+id/editTxt_tukey01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinner_tukey01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_tukey01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btn_tukey01_Click"
+                android:text="Hesapla" >
+            </Button>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/kikare" />
+        </LinearLayout>
+        <!-- /////////////////////////Tukey01 -> //////////////////////////// -->
+        <!-- /////////////////////Tukey05////////////////////// -->
+
+        <LinearLayout
+            android:id="@+id/layout_tukey05"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="V" />
+
+                <EditText
+                    android:id="@+id/editTxt_tukey05"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinner_tukey05"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_tukey05"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btn_tukey05_Click"
+                android:text="Hesapla" >
+            </Button>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/kikare" />
+        </LinearLayout>
+        <!-- /////////////////////////Tukey05 -> //////////////////////////// -->
+        <!-- ///////////////////////Spearman Korelasyon///////////////////////// -->
+
+        <LinearLayout
+            android:id="@+id/layout_spearmankorelasyon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="sd" />
+
+                <EditText
+                    android:id="@+id/editTxt_spearmankorelasyon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinner_spearmankorelasyon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_spearmankorelasyon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btn_spearmankorelasyon_Click"
+                android:text="Hesapla" >
+            </Button>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/kikare" />
+        </LinearLayout>
+        <!-- /////////////////////////Spearman -> //////////////////////////// -->
+
+    </LinearLayout>
+
+</LinearLayout>

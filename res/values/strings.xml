@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Istatistik</string>
+    <string name="action_settings">Settings</string>
+    <string name="ozlu_soz">Bir insanın ölümü trajiktir,on insanın ölümü dramatiktir, bir milyon insanın ölümü ise sadece bir istatistiktir.</string>
+    <string name="sol_menu_baslik">MENÜ</string>
+    <string name="ort_hesaplama">Ortalama Hesapla</string>
+    <string name="harita">Harita</string>
+    <string name="tablo">Tablo Değerleri</string>
+    <string name="duyuru">Duyurular</string>
+    <string name="notification_mainTitle">Deü İstatistik</string>
+    <string name="jsonUrl">http://www.aykutasil.com/json/Yazilim</string>
+    <!-- ////////////////////// -->
+    
+    
+     <!--  NetworkActivity -->
+    <string name="page_title">Estat Duyuruar</string>
+    <string name="updated">Son Güncelleme:</string>
+    <string name="lost_connection">Bağlantı Koptu.</string>
+    <string name="wifi_connected">Wi-Fi bağlandı.</string>
+    <string name="connection_error">İçerik yüklenemedi. İnternet bağlantınızı kontrol ediniz.</string>
+    <string name="xml_error">Xml parse Hatası.</string>
+   
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Push Notifications</string>
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Demo Server.</string>
+    <string name="server_registered">From Demo Server: successfully added device!</string>
+    <string name="server_unregistered">From Demo Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Demo Server after %1$d attempts.</string>
+    <string name="server_unregister_error">Could not unregister device on Demo Server (%1$s).</string>
+    <string name="options_register">Register</string>
+    <string name="options_unregister">Unregister</string>
+    <string name="options_clear">Clear</string>
+    <string name="options_exit">Exit</string>
+    <!-- ///////////////////////////////// -->
+
+    <string-array name="sinif1donem1">
+        <item>PDÖ 1,2</item>
+        <item>Probability and Statistics,4</item>
+        <item>Computational Tools for Statistics I,2</item>
+        <item>Technical English I,2</item>
+        <item>İletişim Becerileri,2</item>
+        <item>Calculus I,4</item>
+        <item>Atatürk İlkeleri ve İnkılap Tarihi I,2</item>
+        <item>Türk Dili I,2</item>
+    </string-array>
+    <string-array name="sinif1donem2">
+        <item>Probleme Dayalı Öğrenme II,2</item>
+        <item>Probability and Statistics II,4</item>
+        <item>Computational Tools for Statistics II,2</item>
+        <item>Technical English II,2</item>
+        <item>Mesleksel Değerler ve Etik,2</item>
+        <item>Calculus II,4</item>
+        <item>Atatürk İlkeleri ve İnkılap Tarihi II,2</item>
+        <item>Türk Dili II,2</item>
+        <item>Beden Eğitimi,2</item>
+        <item>Halk Oyunları,2</item>
+        <item>Müzik,2</item>
+    </string-array>
+    <string-array name="sinif2donem1">
+        <item>Probleme Dayalı Öğrenme III,2</item>
+        <item>Mathematical Statistics,4</item>
+        <item>Örnekleme Yöntemleri,3</item>
+        <item>İstatistiksel Kalite Kontrol,3</item>
+        <item>Calculus III,4</item>
+        <item>Computer Programming I,3</item>
+        <item>FSH,2</item>
+        <item>FSH,2</item>
+    </string-array>
+    <string-array name="sinif2donem2">
+        <item>Probleme Dayalı Öğrenme IV,2</item>
+        <item>Statistical Inference,4</item>
+        <item>Anket Tasarımı ve Çözümlemesi,3</item>
+        <item>Toplam Kalite Yönetimi,3</item>
+        <item>Linear Algebra,4</item>
+        <item>Computer Programming II,3</item>
+        <item>FSH,2</item>
+        <item>FSH,2</item>
+    </string-array>
+    <string-array name="sinif3donem1">
+        <item>Regresyon Çözümlemesi,4</item>
+        <item>Linear Programming,3</item>
+        <item>Yönlendirilmiş Grup Çalışması,3</item>
+        <item>Everyday Probability and Statistics,3</item>
+        <item>Order Statistics and Its Applications,3</item>
+        <item>Simulation,3</item>
+        <item>Database Management,3</item>
+        <item>Kalite Güvence Sistemleri ve Denetim,3</item>
+        <item>İş Süreçlerinin İyileştirilmesi,3</item>
+        <item>Yöneylem Araştırması,3</item>
+        <item>FSH,2</item>
+        <item>FSH,2</item>
+    </string-array>
+    <string-array name="sinif3donem2">
+        <item>İstatistiksel Deney Tasarımı,4</item>
+        <item>Finans Matematiği,3</item>
+        <item>Yönlendirilmiş Grup Çalışması II,3</item>
+        <item>Introduction to Bayesian Statistics,3</item>
+        <item>Special Topics in Regression Analysis,3</item>
+        <item>Ekonometrik Yöntemler,3</item>
+        <item>Zaman Serisi Regresyonu,3</item>
+        <item>Statistical Programming Languages,3</item>
+        <item>Kalite Tekniklerinde Özel Yöntemler,3</item>
+        <item>Altı Sigma Yöntembilimi,3</item>
+        <item>Envanter Yönetimi,3</item>
+        <item>Yöneylem Araştırması,3</item>
+        <item>FSH,2</item>
+        <item>FSH,2</item>
+    </string-array>
+    <string-array name="sinif4donem1">
+        <item>Çok Değişkenli İstatistiksel Çözümleme,4</item>
+        <item>Parametrik Olmayan İstatistiksel Yöntemler,3</item>
+        <item>Stokastik Süreçler,3</item>
+        <item>Dayanıklı Tahminleme ve Çıkarsamaya Giriş,3</item>
+        <item>Biostatistics,3</item>
+        <item>Application of Resampling Methods with R,3</item>
+        <item>Data Management in Statistics with Excel,3</item>
+        <item>Advanced Statistical Quality Control,3</item>
+        <item>Serim Yöntemleri,3</item>
+        <item>Hayat Sigortası,3</item>
+        <item>Finansal Zaman Serisi Analizi,3</item>
+        <item>Bitirme Projesi,2</item>
+        <item>Staj,2</item>
+        <item>FSH,2</item>
+        <item>FSH,2</item>
+    </string-array>
+    <string-array name="sinif4donem2">
+        <item>Kategorik Veri Çözümlemesi,3</item>
+        <item>Zaman Serileri Çözümlemesi,4</item>
+        <item>Probability in Risk Analysis,3</item>
+        <item>Statistical Methods in Bioinformatics,3</item>
+        <item>Statistical Methods in Clinical Trials,3</item>
+        <item>Statistical Methods in Data Mining,3</item>
+        <item>Web Based Survey,3</item>
+        <item>Statistical Process Monitoring and Control Techniques,3</item>
+        <item>Kuyruk Kuramı,3</item>
+        <item>Introduction to Actuarial Models,3</item>
+        <item>Statistics in Risk Management,3</item>
+        <item>FSH,2</item>
+        <item>FSH,2</item>
+    </string-array>
+    <string-array name="puanlar">
+        <item>--,0</item>
+        <item>AA,4</item>
+        <item>BA,3.5</item>
+        <item>BB,3</item>
+        <item>CB,2.5</item>
+        <item>CC,2</item>
+        <item>DC,1.5</item>
+        <item>DD,1</item>
+        <item>FD,0.5</item>
+        <item>FF,0</item>
+    </string-array>
+    <string-array name="siniflar">
+        <item>1.Sınıf 1.Dönem</item>
+        <item>1.Sınıf 2.Dönem</item>
+        <item>2.Sınıf 1.Dönem</item>
+        <item>2.Sınıf 2.Dönem</item>
+        <item>3.Sınıf 1.Dönem</item>
+        <item>3.Sınıf 2.Dönem</item>
+        <item>4.Sınıf 1.Dönem</item>
+        <item>4.Sınıf 2.Dönem</item>
+    </string-array>
+    <string-array name="krediler">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <!-- <item>Yer İsmi,latitude+longitude</item> -->
+    <string-array name="konumlar">
+        <item>Dokuz Çeşmeler Kampüsü,38.384634+27.180361</item>
+        <item>dsfsdf,35.384634+28.180361</item>
+        <item>Dokuz  Kampüsü,37.384634+9.180361</item>
+        <item>Dokuzr Kampüsü,38.384634+3.180361</item>
+        <item>Dokuz Çeşmeler Kampüsü,8.384634+22.180361</item>
+        <item>Dokuz Çeşmeler Kampüsü,38.384634+7.180361</item>
+        <item>Dokuz Çeşmeler Kampüsü,8.384634+27.180361</item>
+    </string-array>
+    <string-array name="Tablolar">
+        <item>Lütfen bir tablo seçiniz..</item>
+        <item>Z</item>
+        <item>Student T</item>
+        <item>Chi-Square</item>
+        <item>Tukey Testi 0.1</item>
+        <item>Tukey Testi 0.5</item>
+        <item>Spearman Korelasyon Katsayısı</item>
+    </string-array>
+
+</resources>

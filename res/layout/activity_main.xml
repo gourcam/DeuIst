@@ -5,13 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/listview_Acilis"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp" >
-    </ListView>
-
     <!-- <WebView -->
     <!-- android:id="@+id/webview" -->
     <!-- android:layout_width="match_parent" -->
@@ -79,5 +72,28 @@
 
 
     <!-- </ScrollView> -->
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Duyurular"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/blue" />
+
+    <ListView
+        android:id="@+id/listview_Acilis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" >
+    </ListView>
 
 </LinearLayout>

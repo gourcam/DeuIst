@@ -49,8 +49,7 @@ public class Kutuphane {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(
-						"com.deu.istatistik.ORTHESACTIVITY");
+				Intent intent = new Intent("com.deu.istatistik.ORTHESACTIVITY");
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				activity.startActivity(intent);
 
@@ -64,8 +63,7 @@ public class Kutuphane {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(
-						"com.deu.istatistik.HARITAACTIVITY");
+				Intent intent = new Intent("com.deu.istatistik.HARITAACTIVITY");
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				activity.startActivity(intent);
 			}
@@ -78,8 +76,7 @@ public class Kutuphane {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(
-						"com.deu.istatistik.TABLOACTIVITY");
+				Intent intent = new Intent("com.deu.istatistik.TABLOACTIVITY");
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				activity.startActivity(intent);
 			}
@@ -93,6 +90,18 @@ public class Kutuphane {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent("com.deu.istatistik.ACILIS");
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				activity.startActivity(intent);
+			}
+		});
+		LinearLayout DescriptionStatsClick = (LinearLayout) activity
+				.findViewById(R.id.DescriptionStatsClick);
+		DescriptionStatsClick.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent("com.aka.stat.DESCRIPTIONSTATS");
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				activity.startActivity(intent);
 			}

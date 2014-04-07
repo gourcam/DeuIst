@@ -176,6 +176,41 @@
                     android:layout_marginRight="15dp"
                     android:background="@color/sol_menu_cizgi_rengi" />
 
+                <LinearLayout
+                    android:id="@+id/DescriptionStatsClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/solmenucustomclickstyle"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="0.20"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:src="@drawable/tablokucuk" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.80"
+                        android:gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="@string/title_descriptionstats"
+                        android:textColor="@color/kahve" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/sol_menu_cizgi_rengi" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="60dp"

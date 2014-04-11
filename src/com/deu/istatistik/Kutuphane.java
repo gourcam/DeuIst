@@ -112,8 +112,9 @@ public class Kutuphane {
 
 					@Override
 					public void onClick(View vi) {
-						Intent intent = new Intent(
-								"com.deu.istatistik.SettingsActivity");
+						Intent intent = new Intent(activity,
+								IletisimActivity.class);
+						// "com.deu.istatistik.ILETISIMACTIVITY");
 						activity.startActivity(intent);
 					}
 				});

@@ -191,7 +191,7 @@
                         android:layout_weight="0.20"
                         android:gravity="left"
                         android:padding="5dp"
-                        android:src="@drawable/tablokucuk" />
+                        android:src="@drawable/tanimlayicikucuk" />
 
                     <TextView
                         android:id="@+id/textView6"

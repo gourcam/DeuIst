@@ -145,11 +145,11 @@ public class TabloActivity extends Activity {
 
 				switch (secilenindis) {
 				case 0:
-
 					break;
 				// Z
 				case 1:
-
+					LinearLayout lyt0 = (LinearLayout) findViewById(R.id.layout_z);
+					lyt0.setVisibility(View.VISIBLE);
 					break;
 				// Student T
 				case 2:
@@ -197,6 +197,45 @@ public class TabloActivity extends Activity {
 			lyt.setVisibility(View.GONE);
 
 		}
+	}
+
+	public void btn_z_Click(View vi) {
+		try {
+			final String[] ztablo = getResources().getStringArray(
+					R.array.ztablo);
+
+			EditText KulGiris = (EditText) findViewById(R.id.editTxt_z);
+			double x = Double.parseDouble(KulGiris.getText().toString());
+			if (x < 3.5) {
+				double z1 = Double.parseDouble(ztablo[(int) (x * 100)]
+						.substring(0, 4)); // Düþük olan z deðeri deðer
+				double z2 = Double.parseDouble(ztablo[(int) (x * 100) + 1]
+						.substring(0, 4)); // Yüksek olan zdeðeri deðer;
+				double y1 = Double.parseDouble(ztablo[(int) (x * 100)]
+						.substring(ztablo[(int) (x * 100)].length() - 6,
+								ztablo[(int) (x * 100)].length()));
+				;
+				double y2 = Double.parseDouble(ztablo[(int) (x * 100) + 1]
+						.substring(ztablo[(int) (x * 100) + 1].length() - 6,
+								ztablo[(int) (x * 100) + 1].length()));
+				;
+				double sonuc = (y2 - y1) * (x - z1) / (z2 - z1);
+
+				kutuphane.getAlertDialog(this, "Sonuç : ",
+						Double.toString(sonuc + y1));
+				// KulSonuc.setText(String.valueOf(sonuc + y1));
+			}
+
+			else {
+				kutuphane.getAlertDialog(this, "Sonuç : ",
+						Double.toString(0.4999));
+				// KulSonuc.setText("0.4999");
+			}
+		} catch (Exception e) {
+			kutuphane.getAlertDialog(this, "Hata",
+					"Lütfen doðru giriþ yaptýðýnýzdan emin olunuz.");
+		}
+
 	}
 
 	public void btn_kikare_Click(View vi) {
@@ -288,8 +327,6 @@ public class TabloActivity extends Activity {
 	public void btn_tukey05_Click(View vi) {
 
 		try {
-			
-			
 
 			EditText alfadeger = (EditText) findViewById(R.id.editTxt_tukey05);
 			String deger = alfadeger.getText().toString();

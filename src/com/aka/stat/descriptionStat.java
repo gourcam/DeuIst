@@ -12,9 +12,11 @@ import android.R.array;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -22,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.deu.istatistik.Acilis;
 import com.deu.istatistik.Kutuphane;
 import com.deu.istatistik.R;
 import com.flurry.android.Constants;
@@ -47,7 +50,7 @@ public class descriptionStat extends Activity {
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setSubtitle("Dokuz Eylül Üniversitesi");
-		actionBar.setTitle("Description Stats");
+		actionBar.setTitle("Descriptive Stats");
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -69,6 +72,9 @@ public class descriptionStat extends Activity {
 		sayilar = parseEditTexttoDouble(editTextSayilar.getText().toString(),
 				"\n");
 
+		if (sayilar == null)
+			return;
+
 		double mean = calcMean(sayilar);
 		double stdev = calcStDev(sayilar);
 		double variance = Math.pow(stdev, 2);
@@ -76,43 +82,57 @@ public class descriptionStat extends Activity {
 		double max = calcMax(sayilar);
 		double sum = calcSum(sayilar);
 		double N = calcN(sayilar);
+		double range = calcRange(sayilar);
+
+		DescriptionStats ds_range = new DescriptionStats();
+		ds_range.setStats_key("Range");
+		ds_range.setStats_val(new DecimalFormat("0.#####").format(range));
 
 		DescriptionStats ds_sum = new DescriptionStats();
 		ds_sum.setStats_key("Sum");
-		ds_sum.setStats_val(Double.toString(sum));
+		ds_sum.setStats_val(new DecimalFormat("0.#####").format(sum));
 
 		DescriptionStats ds_mean = new DescriptionStats();
 		ds_mean.setStats_key("Mean");
-		ds_mean.setStats_val(new DecimalFormat("0.00000").format(mean));
+		ds_mean.setStats_val(new DecimalFormat("0.#####").format(mean));
 
 		DescriptionStats ds_min = new DescriptionStats();
 		ds_min.setStats_key("Min ");
-		ds_min.setStats_val(Double.toString(min));
+		ds_min.setStats_val(new DecimalFormat("0.#####").format(min));
 
 		DescriptionStats ds_max = new DescriptionStats();
 		ds_max.setStats_key("Max");
-		ds_max.setStats_val(Double.toString(max));
+		ds_max.setStats_val(new DecimalFormat("0.#####").format(max));
 
 		DescriptionStats ds_stdev = new DescriptionStats();
 		ds_stdev.setStats_key("StDev");
-		ds_stdev.setStats_val(new DecimalFormat("0.00000").format(stdev));
+		ds_stdev.setStats_val(new DecimalFormat("0.#####").format(stdev));
 
 		DescriptionStats ds_var = new DescriptionStats();
 		ds_var.setStats_key("Variance");
-		ds_var.setStats_val(new DecimalFormat("0.00000").format(variance));
+		ds_var.setStats_val(new DecimalFormat("0.#####").format(variance));
 
 		DescriptionStats ds_N = new DescriptionStats();
 		ds_N.setStats_key("N");
-		ds_N.setStats_val(Double.toString(N));
+		ds_N.setStats_val(new DecimalFormat("0.#####").format(N));
 
 		arraylist.add(ds_mean);
 		arraylist.add(ds_var);
 		arraylist.add(ds_stdev);
 		arraylist.add(ds_min);
 		arraylist.add(ds_max);
+		arraylist.add(ds_range);
 		arraylist.add(ds_sum);
 		arraylist.add(ds_N);
 
+	}
+
+	private double calcRange(double[] degerler) {
+
+		double min = calcMin(degerler);
+		double max = calcMax(degerler);
+
+		return (max - min);
 	}
 
 	private double calcStDev(double[] degerler) {
@@ -216,7 +236,8 @@ public class descriptionStat extends Activity {
 
 		} catch (Exception e) {
 			kutuphane.getAlertDialog(this, "Hatalý Giriþ ! ",
-					"Lütfen sayý girdiðinizden emin olun.");
+					"Lütfen doðru giriþ yaptýðýnýzda emin olunuz.");
+			return null;
 		}
 		return temp;
 	}
@@ -309,6 +330,25 @@ public class descriptionStat extends Activity {
 			return vi;
 		}
 
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case android.R.id.home:
+
+			Intent intent = new Intent(this, Acilis.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+
+			break;
+
+		default:
+			break;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 }

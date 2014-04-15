@@ -2,23 +2,42 @@ package com.deu.istatistik;
 
 import java.util.ArrayList;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-import com.deu.istatistik.R;
 import com.flurry.android.FlurryAgent;
+import com.jjoe64.graphview.BarGraphView;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphView.GraphViewData;
+import com.jjoe64.graphview.GraphViewDataInterface;
+import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
+import com.jjoe64.graphview.LineGraphView;
+import com.jjoe64.graphview.ValueDependentColor;
 
-public class TabloActivity extends Activity {
+public class TabloActivity extends Activity implements AnimationListener {
 
 	Kutuphane kutuphane = new Kutuphane();
 
@@ -199,13 +218,21 @@ public class TabloActivity extends Activity {
 		}
 	}
 
+	//@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	public void btn_z_Click(View vi) {
 		try {
+
+			LinearLayout layout = (LinearLayout) findViewById(R.id.layout_z);
+
+			if (layout.getChildCount() == 3) {
+				View ww = layout.getChildAt(layout.getChildCount() - 1);
+				layout.removeView(ww);
+			}
 			final String[] ztablo = getResources().getStringArray(
 					R.array.ztablo);
 
 			EditText KulGiris = (EditText) findViewById(R.id.editTxt_z);
-			double x = Double.parseDouble(KulGiris.getText().toString());
+			final double x = Double.parseDouble(KulGiris.getText().toString());
 			if (x < 3.5) {
 				double z1 = Double.parseDouble(ztablo[(int) (x * 100)]
 						.substring(0, 4)); // Düþük olan z deðeri deðer
@@ -223,7 +250,79 @@ public class TabloActivity extends Activity {
 
 				kutuphane.getAlertDialog(this, "Sonuç : ",
 						Double.toString(sonuc + y1));
-				// KulSonuc.setText(String.valueOf(sonuc + y1));
+
+				// /////////////////////
+				GraphView graphView = new BarGraphView(this, "");
+
+				GraphViewSeriesStyle seriesStyle = new GraphViewSeriesStyle();
+
+				seriesStyle.setValueDependentColor(new ValueDependentColor() {
+					@Override
+					public int get(GraphViewDataInterface data) {
+						// the higher the more red
+
+						if (data.getX() >= 0 && data.getX() < x) {
+							return getResources().getColor(R.color.z_icalan);
+						} else {
+							return getResources().getColor(R.color.z_disalan);
+						}
+
+					}
+				});
+				GraphViewDataInterface[] dat = new GraphViewDataInterface[] { new GraphViewData(
+						0, 0) };
+				GraphViewSeries exampleSeries = new GraphViewSeries("Tablo",
+						seriesStyle, dat);
+				int countNumber = 200;
+				double number = -4;
+				for (int i = 0; i < countNumber; i++) {
+
+					GraphViewData dt = new GraphViewData(number,
+							StandartNormal(number));
+					exampleSeries.appendData(dt, true, countNumber);
+
+					double q = (countNumber / 8);
+					q = (1 / q);
+
+					number += q;
+
+				}
+				
+				//
+				Animation animation = AnimationUtils.loadAnimation(this, R.anim.tabloanim);
+				animation.setDuration(1000);
+				animation.setRepeatMode(1);
+				animation.setAnimationListener(this);
+
+				// graphView.setBackground(getResources().getDrawable(
+				// R.drawable.edittext));
+				// graphView.setScalable(true);
+				// graphView.setScrollable(true);
+				graphView.setHorizontalLabels(new String[] { "" });
+				graphView.setVerticalLabels(new String[] { "" });
+				graphView.addSeries(exampleSeries);
+				graphView.setAnimation(animation);
+				// graphView.setDrawingCacheBackgroundColor(Color.BLACK);
+
+				// GraphViewSeriesStyle sdf = new GraphViewSeriesStyle();
+
+				// graphView.setHorizontalLabels(new String[] { "2 days ago",
+				// / "yesterday", "today", "tomorrow" });
+				// graphView.setVerticalLabels(new String[] { "high", "middle",
+				// "low" });
+				// graphView.getGraphViewStyle().setGridColor(Color.GREEN);
+				// graphView.getGraphViewStyle().setHorizontalLabelsColor(
+				// Color.YELLOW);
+				// graphView.getGraphViewStyle().setVerticalLabelsColor(Color.RED);
+				graphView.getGraphViewStyle().setTextSize(14);
+				// getResources().getDimension(R.dimen.big));
+				// graphView.getGraphViewStyle().setNumHorizontalLabels(5);
+				// graphView.getGraphViewStyle().setNumVerticalLabels(4);
+				// graphView.getGraphViewStyle().setVerticalLabelsWidth(300);
+				// data
+
+				layout.addView(graphView);
+
 			}
 
 			else {
@@ -238,13 +337,23 @@ public class TabloActivity extends Activity {
 
 	}
 
+	
+	private double StandartNormal(double x) {
+		double sonuc = 0;
+		sonuc = (1 / Math.sqrt(2 * Math.PI)) * Math.exp(-(Math.pow(x, 2) / 2));
+
+		return sonuc;
+	}
+
 	public void btn_kikare_Click(View vi) {
 
 		try {
 
+			LinearLayout layout = (LinearLayout) findViewById(R.id.layout_kikare);
+
 			EditText alfadeger = (EditText) findViewById(R.id.editTxt_kikare_sd);
 			String deger = alfadeger.getText().toString();
-			int deger_int = Integer.parseInt(deger);
+			final int deger_int = Integer.parseInt(deger);
 
 			if (deger_int > 0 && deger_int <= 30) {
 
@@ -255,6 +364,71 @@ public class TabloActivity extends Activity {
 				String sonuc = satir[sutun];
 
 				kutuphane.getAlertDialog(this, "Sonuç : ", sonuc);
+
+				// /////////////////////
+				GraphView graphView = new BarGraphView(this, "");
+
+				GraphViewSeriesStyle seriesStyle = new GraphViewSeriesStyle();
+
+				seriesStyle.setValueDependentColor(new ValueDependentColor() {
+					@Override
+					public int get(GraphViewDataInterface data) {
+						// the higher the more red
+
+						if (data.getX() >= 0 && data.getX() < deger_int) {
+							return getResources().getColor(R.color.z_icalan);
+						} else {
+							return getResources().getColor(R.color.z_disalan);
+						}
+
+					}
+				});
+				GraphViewDataInterface[] dat = new GraphViewDataInterface[] { new GraphViewData(
+						0, 0) };
+				GraphViewSeries exampleSeries = new GraphViewSeries("Tablo",
+						seriesStyle, dat);
+				int countNumber = 60;
+				double number = -4;
+				for (int i = 0; i < countNumber; i++) {
+
+					GraphViewData dt = new GraphViewData(number,
+							Math.pow(StandartNormal(number),2));
+					exampleSeries.appendData(dt, true, countNumber);
+
+					double q = (countNumber / 8);
+					q = (1 / q);
+
+					number += q;
+
+				}
+
+				// graphView.setBackground(getResources().getDrawable(
+				// R.drawable.edittext));
+				// graphView.setScalable(true);
+				// graphView.setScrollable(true);
+				graphView.setHorizontalLabels(new String[] { "" });
+				graphView.setVerticalLabels(new String[] { "" });
+				graphView.addSeries(exampleSeries);
+				// graphView.setDrawingCacheBackgroundColor(Color.BLACK);
+
+				// GraphViewSeriesStyle sdf = new GraphViewSeriesStyle();
+
+				// graphView.setHorizontalLabels(new String[] { "2 days ago",
+				// / "yesterday", "today", "tomorrow" });
+				// graphView.setVerticalLabels(new String[] { "high", "middle",
+				// "low" });
+				// graphView.getGraphViewStyle().setGridColor(Color.GREEN);
+				// graphView.getGraphViewStyle().setHorizontalLabelsColor(
+				// Color.YELLOW);
+				// graphView.getGraphViewStyle().setVerticalLabelsColor(Color.RED);
+				graphView.getGraphViewStyle().setTextSize(14);
+				// getResources().getDimension(R.dimen.big));
+				// graphView.getGraphViewStyle().setNumHorizontalLabels(5);
+				// graphView.getGraphViewStyle().setNumVerticalLabels(4);
+				// graphView.getGraphViewStyle().setVerticalLabelsWidth(300);
+				// data
+
+				layout.addView(graphView);
 
 			} else {
 				kutuphane.getAlertDialog(this, "Aralýk Hatasý",
@@ -392,6 +566,20 @@ public class TabloActivity extends Activity {
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.menuacilis, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		// TODO Auto-generated method stub
+		super.onCreateContextMenu(menu, v, menuInfo);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
@@ -408,5 +596,23 @@ public class TabloActivity extends Activity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAnimationStart(Animation animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationEnd(Animation animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationRepeat(Animation animation) {
+		// TODO Auto-generated method stub
+		
 	}
 }

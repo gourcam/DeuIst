@@ -124,6 +124,7 @@ public class Acilis extends Activity {
 
 		// /////////////
 		if (kutuphane.internetErisimi(getApplicationContext())) {
+			
 			GcmKayitIslemleri();
 		}
 

@@ -10,19 +10,21 @@ package com.deu.istatistik;
 public final class R {
     public static final class anim {
         public static final int deulogoanim=0x7f040000;
+        public static final int tabloanim=0x7f040001;
     }
     public static final class array {
-        public static final int Tablolar=0x7f0c000c;
+        public static final int Tablolar=0x7f0c000d;
         /**  <item>Yer İsmi,latitude+longitude</item> 
          */
         public static final int konumlar=0x7f0c000b;
+        public static final int konumlar_resimler=0x7f0c000c;
         public static final int krediler=0x7f0c000a;
-        public static final int pref_example_list_titles=0x7f0c000e;
-        public static final int pref_example_list_values=0x7f0c000f;
-        public static final int pref_sync_frequency_titles=0x7f0c0010;
-        public static final int pref_sync_frequency_values=0x7f0c0011;
+        public static final int pref_example_list_titles=0x7f0c000f;
+        public static final int pref_example_list_values=0x7f0c0010;
+        public static final int pref_sync_frequency_titles=0x7f0c0011;
+        public static final int pref_sync_frequency_values=0x7f0c0012;
         public static final int puanlar=0x7f0c0008;
-        /**  ///////////////////////////////// 
+        /**  ////////////////////////////////////////////////// 
          */
         public static final int sinif1donem1=0x7f0c0000;
         public static final int sinif1donem2=0x7f0c0001;
@@ -33,7 +35,9 @@ public final class R {
         public static final int sinif4donem1=0x7f0c0006;
         public static final int sinif4donem2=0x7f0c0007;
         public static final int siniflar=0x7f0c0009;
-        public static final int ztablo=0x7f0c000d;
+        /**  //  İletişim Activity 
+         */
+        public static final int ztablo=0x7f0c000e;
     }
     public static final class attr {
         /** 
@@ -311,12 +315,14 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f070006;
         public static final int common_signin_btn_light_text_focused=0x7f070007;
         public static final int common_signin_btn_light_text_pressed=0x7f070005;
-        public static final int common_signin_btn_text_dark=0x7f070010;
-        public static final int common_signin_btn_text_light=0x7f070011;
+        public static final int common_signin_btn_text_dark=0x7f070012;
+        public static final int common_signin_btn_text_light=0x7f070013;
         public static final int kahve=0x7f07000b;
         public static final int sol_menu_baslik_rengi=0x7f07000d;
         public static final int sol_menu_cizgi_rengi=0x7f07000e;
         public static final int white=0x7f07000c;
+        public static final int z_disalan=0x7f070011;
+        public static final int z_icalan=0x7f070010;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -388,6 +394,8 @@ containing a value of this type.
         public static final int HaritaClick=0x7f08003a;
         public static final int ListView_dsc_stat_description=0x7f080012;
         public static final int OrtHesapla_Click=0x7f080037;
+        public static final int Outlier=0x7f080065;
+        public static final int Regresyon=0x7f080064;
         public static final int TabloClick=0x7f08003d;
         public static final int acilis_txtBaslik=0x7f08000b;
         public static final int acilis_txtYazi=0x7f08000c;
@@ -512,13 +520,15 @@ containing a value of this type.
     public static final class menu {
         public static final int main=0x7f0e0000;
         public static final int menuacilis=0x7f0e0001;
+        public static final int menudescriptivestats=0x7f0e0002;
+        public static final int menutablo=0x7f0e0003;
     }
     public static final class raw {
         public static final int qwerty=0x7f060000;
     }
     public static final class string {
         public static final int action_settings=0x7f09001b;
-        public static final int already_registered=0x7f09002f;
+        public static final int already_registered=0x7f090031;
         public static final int app_name=0x7f09001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -614,70 +624,78 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f090013;
-        public static final int connection_error=0x7f09002a;
+        public static final int connection_error=0x7f09002c;
         public static final int desc_aciklama=0x7f090025;
-        public static final int dummy_button=0x7f090040;
-        public static final int dummy_content=0x7f090041;
+        public static final int dummy_button=0x7f090043;
+        public static final int dummy_content=0x7f090044;
         public static final int duyuru=0x7f090021;
-        public static final int error_config=0x7f09002e;
-        public static final int gcm_deleted=0x7f090035;
-        public static final int gcm_error=0x7f090033;
-        public static final int gcm_message=0x7f090032;
-        public static final int gcm_recoverable_error=0x7f090034;
-        public static final int gcm_registered=0x7f090030;
-        public static final int gcm_unregistered=0x7f090031;
+        public static final int error_config=0x7f090030;
+        public static final int gcm_deleted=0x7f090037;
+        public static final int gcm_error=0x7f090035;
+        public static final int gcm_message=0x7f090034;
+        public static final int gcm_recoverable_error=0x7f090036;
+        public static final int gcm_registered=0x7f090032;
+        public static final int gcm_unregistered=0x7f090033;
         public static final int harita=0x7f09001f;
+        /**  ///////////////////////////////// 
+ Harita Activity 
+         */
+        public static final int haritaSpinnerFirst=0x7f090041;
         public static final int jsonUrl=0x7f090023;
-        public static final int lost_connection=0x7f090028;
-        public static final int menu_settings=0x7f09002c;
+        public static final int lost_connection=0x7f09002a;
+        public static final int menu_outlier=0x7f090027;
+        public static final int menu_regresyon=0x7f090026;
+        public static final int menu_settings=0x7f09002e;
         public static final int notification_mainTitle=0x7f090022;
-        public static final int options_clear=0x7f09003d;
-        public static final int options_exit=0x7f09003e;
-        public static final int options_register=0x7f09003b;
-        public static final int options_unregister=0x7f09003c;
+        public static final int options_clear=0x7f09003f;
+        public static final int options_exit=0x7f090040;
+        public static final int options_register=0x7f09003d;
+        public static final int options_unregister=0x7f09003e;
         public static final int ort_hesaplama=0x7f09001e;
         public static final int ozlu_soz=0x7f09001c;
         /**  NetworkActivity 
          */
-        public static final int page_title=0x7f090026;
-        public static final int pref_default_display_name=0x7f090047;
-        public static final int pref_description_social_recommendations=0x7f090045;
+        public static final int page_title=0x7f090028;
+        public static final int pref_default_display_name=0x7f09004a;
+        public static final int pref_description_social_recommendations=0x7f090048;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f090049;
+        public static final int pref_header_data_sync=0x7f09004c;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f090043;
+        public static final int pref_header_general=0x7f090046;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f09004c;
-        public static final int pref_ringtone_silent=0x7f09004f;
-        public static final int pref_title_add_friends_to_messages=0x7f090048;
-        public static final int pref_title_display_name=0x7f090046;
-        public static final int pref_title_new_message_notifications=0x7f09004d;
-        public static final int pref_title_ringtone=0x7f09004e;
-        public static final int pref_title_social_recommendations=0x7f090044;
-        public static final int pref_title_sync_frequency=0x7f09004a;
-        public static final int pref_title_system_sync_settings=0x7f09004b;
-        public static final int pref_title_vibrate=0x7f090050;
-        public static final int server_register_error=0x7f090039;
-        public static final int server_registered=0x7f090037;
-        public static final int server_registering=0x7f090036;
-        public static final int server_unregister_error=0x7f09003a;
-        public static final int server_unregistered=0x7f090038;
+        public static final int pref_header_notifications=0x7f09004f;
+        public static final int pref_ringtone_silent=0x7f090052;
+        public static final int pref_title_add_friends_to_messages=0x7f09004b;
+        public static final int pref_title_display_name=0x7f090049;
+        public static final int pref_title_new_message_notifications=0x7f090050;
+        public static final int pref_title_ringtone=0x7f090051;
+        public static final int pref_title_social_recommendations=0x7f090047;
+        public static final int pref_title_sync_frequency=0x7f09004d;
+        public static final int pref_title_system_sync_settings=0x7f09004e;
+        public static final int pref_title_vibrate=0x7f090053;
+        public static final int server_register_error=0x7f09003b;
+        public static final int server_registered=0x7f090039;
+        public static final int server_registering=0x7f090038;
+        public static final int server_unregister_error=0x7f09003c;
+        public static final int server_unregistered=0x7f09003a;
         public static final int sol_menu_baslik=0x7f09001d;
         public static final int tablo=0x7f090020;
-        public static final int title_activity_iletisim=0x7f09003f;
-        public static final int title_activity_main=0x7f09002d;
-        public static final int title_activity_settings=0x7f090042;
+        /**  İletişim Activity 
+         */
+        public static final int title_activity_iletisim=0x7f090042;
+        public static final int title_activity_main=0x7f09002f;
+        public static final int title_activity_settings=0x7f090045;
         /**  ////////////////////// 
  Description Stast 
          */
         public static final int title_descriptionstats=0x7f090024;
-        public static final int updated=0x7f090027;
-        public static final int wifi_connected=0x7f090029;
-        public static final int xml_error=0x7f09002b;
+        public static final int updated=0x7f090029;
+        public static final int wifi_connected=0x7f09002b;
+        public static final int xml_error=0x7f09002d;
     }
     public static final class style {
         /** 

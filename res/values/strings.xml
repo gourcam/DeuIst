@@ -17,6 +17,8 @@
     <!-- Description Stast -->
     <string name="title_descriptionstats">Descriptive Stats</string>
     <string name="desc_aciklama">Lütfen her satıra bir sayi gelecek şekilde giriş yapınız.</string>
+    <string name="menu_regresyon">Regresyon</string>
+    <string name="menu_outlier">Uç değerler</string>
 
     <!-- NetworkActivity -->
     <string name="page_title">Estat Duyuruar</string>
@@ -45,6 +47,12 @@
     <string name="options_clear">Clear</string>
     <string name="options_exit">Exit</string>
     <!-- ///////////////////////////////// -->
+
+
+    <!-- Harita Activity -->
+    <string name="haritaSpinnerFirst">Nereye Gitmek İstersin  ?</string>
+
+    <!-- ////////////////////////////////////////////////// -->
 
     <string-array name="sinif1donem1">
         <item>PDÖ 1,2</item>
@@ -188,13 +196,38 @@
 
     <!-- <item>Yer İsmi,latitude+longitude</item> -->
     <string-array name="konumlar">
-        <item>Dokuz Çeşmeler Kampüsü,38.384634+27.180361</item>
-        <item>dsfsdf,35.384634+28.180361</item>
-        <item>Dokuz  Kampüsü,37.384634+9.180361</item>
-        <item>Dokuzr Kampüsü,38.384634+3.180361</item>
-        <item>Dokuz Çeşmeler Kampüsü,8.384634+22.180361</item>
-        <item>Dokuz Çeşmeler Kampüsü,38.384634+7.180361</item>
-        <item>Dokuz Çeşmeler Kampüsü,8.384634+27.180361</item>
+        <item> Eshot Araçlari Son Durak , 38.376176+ 27.191918</item>
+        <item> Yerleşke Araçlari Son Durak, 38.368572+ 27.211079</item>
+        <item> Mimarlik Fakültesi , 38.368774+ 27.207711</item>
+        <item> Fen Edebiyat Fakültesi, 38.366598+ 27.201925</item>
+        <item> Fen Bilimleri Enstitusu, 38.371584+ 27.198891</item>
+        <item> Deu Sosyal Tesisleri, 38.371146+ 27.204470</item>
+        <item> Özel Deu 75.Yil İlkogretim Okulu, 38.373838+ 27.197025</item>
+        <item> Sağlik Tesisi(Mediko), 38.371109+ 27.203142</item>
+        <item> Merkez Kütüphane, 38.371088+ 27.202463</item>
+        <item> Deu Spor Salonu , 38.371567+ 27.200908</item>
+        <item> İşletme Fakültesi , 38.367819+ 27.201583</item>
+        <item> Sosyal Bilimler Enstitusu, 38.369283+ 27.202259</item>
+        <item> Muhendislik Bolumu, 38.368160+ 27.210496</item>
+        <item> Jeofizik Muhendisligi, 38.369368+ 27.209239</item>
+        <item> Dokuz Çeşmeler Kampüsü,38.384634+27.180361</item>
+    </string-array>
+    <string-array name="konumlar_resimler">
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
+        <item>pdo__.jpg</item>
     </string-array>
     <string-array name="Tablolar">
         <item>Lütfen bir tablo seçiniz..</item>
@@ -202,13 +235,15 @@
         <item>Student T</item>
         <item>Chi-Square</item>
         <item>Tukey Testi 0.1</item>
-        <item>Tukey Testi 0.5</item>
+        <item>Tukey Testi 0.05</item>
         <item>Spearman Korelasyon Katsayısı</item>
     </string-array>
 
+    <!-- İletişim Activity -->
     <string name="title_activity_iletisim">IletisimActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- //  İletişim Activity -->
 
     <string-array name="ztablo">
         <item>0.00,0.0000</item>

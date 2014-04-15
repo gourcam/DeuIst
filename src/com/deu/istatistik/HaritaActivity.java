@@ -2,34 +2,44 @@ package com.deu.istatistik;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 
+import android.R.string;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.deu.istatistik.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class HaritaActivity extends FragmentActivity implements
-		LocationListener {
+		LocationListener, OnMarkerClickListener {
 
 	private LocationManager locman;
 	private GoogleMap googleHarita;
@@ -39,7 +49,6 @@ public class HaritaActivity extends FragmentActivity implements
 
 	Kutuphane kutuphane = new Kutuphane();
 	ArrayList<Konumlar> listkonum = new ArrayList<Konumlar>();
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,6 +63,7 @@ public class HaritaActivity extends FragmentActivity implements
 		actionBar.show();
 
 		kutuphane.startFlurry(this);
+
 		getKonumParcala();
 
 		harita_spinnerYerListesiDoldur();
@@ -76,6 +86,7 @@ public class HaritaActivity extends FragmentActivity implements
 		criteria.setCostAllowed(true);
 
 		provider = locman.getBestProvider(criteria, false);
+		
 		Location location = locman.getLastKnownLocation(provider);
 
 		if (location != null) {
@@ -87,14 +98,18 @@ public class HaritaActivity extends FragmentActivity implements
 					provider = backupProvider;
 			}
 
-			locman.requestLocationUpdates(provider, 1000, 50, this);
+			locman.requestLocationUpdates(provider, 3000, 50, this);
 		}
 
+		initHarita();
+		// HaritayaKonumEkle();
 	}
 
 	private void harita_spinnerYerListesiDoldur() {
 
 		ArrayList<String> yerisimleri = new ArrayList<String>();
+
+		yerisimleri.add(getResources().getString(R.string.haritaSpinnerFirst));
 
 		for (int a = 0; a < listkonum.size(); a++) {
 
@@ -103,51 +118,66 @@ public class HaritaActivity extends FragmentActivity implements
 		}
 
 		Spinner harita_spinnerYerListesi = (Spinner) findViewById(R.id.harita_spinnerYerListesi);
+		harita_spinnerYerListesi
+				.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> parent,
+							View view, int position, long id) {
+						int secilenindis = parent.getSelectedItemPosition();
+
+						if (secilenindis == 0) {
+							googleHarita.clear();
+							HaritayaKonumEkle();
+						} else {
+
+							googleHarita.clear();
+							HaritayaKonumEkle(secilenindis - 1);
+						}
+
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> parent) {
+						googleHarita.clear();
+						HaritayaKonumEkle();
+
+					}
+				});
 		ArrayAdapter<String> adap = new ArrayAdapter<String>(this,
 				R.layout.spinnernotharf, yerisimleri);
 		harita_spinnerYerListesi.setAdapter(adap);
 
 	}
 
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		locman.requestLocationUpdates(provider, 1000, 50, this);
-	}
-
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		locman.removeUpdates(this);
-	}
-
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-
-		kutuphane.stopFlurry(this);
-	}
-
-	private void HaritaGoster(LatLng latlng) {
-
+	private void initHarita() {
 		googleHarita = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.haritafragment)).getMap();
+		googleHarita.setOnMarkerClickListener(this);
+
+		googleHarita.setMyLocationEnabled(true);
+	}
+
+	private void HaritadaGoster(LatLng latlng) {
+		//
+		// googleHarita = ((SupportMapFragment) getSupportFragmentManager()
+		// .findFragmentById(R.id.haritafragment)).getMap();
+		// googleHarita.setOnMarkerClickListener(this);
+
 		if (googleHarita != null) {
 			LatLng Koordinat = latlng;
 
 			googleHarita.clear();
-			googleHarita.setMyLocationEnabled(true);
+
+			// googleHarita.setMyLocationEnabled(true);
 			// googleHarita.addMarker(new MarkerOptions().position(Koordinat)
 			// .title("Burdasýn"));
-			googleHarita.addMarker(new MarkerOptions()
-					.icon(BitmapDescriptorFactory
-							.fromResource(android.R.drawable.ic_input_add))
-					.title("Burdasýn").position(Koordinat));
+			// googleHarita.addMarker(new MarkerOptions()
+			// .icon(BitmapDescriptorFactory
+			// .fromResource(android.R.drawable.ic_input_add))
+			// .title("Burdasýn").position(Koordinat));
 
-			getKonumParcala();
+			// getKonumParcala();
 			HaritayaKonumEkle();
 			// googleHarita.moveCamera(CameraUpdateFactory.newLatLngZoom(
 			// Koordinat, 16));
@@ -169,17 +199,81 @@ public class HaritaActivity extends FragmentActivity implements
 
 	}
 
-	public void HaritayaKonumEkle() {
+	private void addMarkertoMap(LatLng latlng, BitmapDescriptor icon,
+			String title) {
 
-		for (int a = 0; a < listkonum.size(); a++) {
-			Konumlar konumum = listkonum.get(a);
+		try {
+			LatLng Koordinat = latlng;
+			googleHarita.addMarker(new MarkerOptions().position(Koordinat)
+					.icon(icon).title(title));
+		} catch (Exception e) {
+			kutuphane.getAlertDialog(this, "hata", "Konum Ekleme Hatasý!");
+		}
+	}
 
-			LatLng Koordinat = new LatLng(Double.parseDouble(konumum
+	private void HaritayaKonumEkle(int Spinnerindis) {
+		String[] resimler = getResources().getStringArray(
+				R.array.konumlar_resimler);
+
+		String[] pathresimler = new String[resimler.length];
+
+		for (int i = 0; i < resimler.length; i++) {
+			pathresimler[i] = "HaritaMarkerImage/" + resimler[i];
+
+		}
+
+		try {
+			Konumlar konumum = listkonum.get(Spinnerindis);
+
+			LatLng latlng = new LatLng(Double.parseDouble(konumum
 					.getKonum_latitude()), Double.parseDouble(konumum
 					.getKonum_longitude()));
 
-			googleHarita.addMarker(new MarkerOptions().position(Koordinat)
-					.title(konumum.getKonumadi()));
+			BitmapDescriptor icon = BitmapDescriptorFactory
+					.fromAsset(pathresimler[Spinnerindis]);
+			String title = konumum.getKonumadi();
+
+			// googleHarita.addMarker(new MarkerOptions().position(latlng)
+			// .icon(icon).title(title));
+			addMarkertoMap(latlng, icon, title);
+
+		} catch (Exception e) {
+		}
+
+	}
+
+	private void HaritayaKonumEkle() {
+
+		String[] resimler = getResources().getStringArray(
+				R.array.konumlar_resimler);
+
+		String[] pathresimler = new String[resimler.length];
+
+		for (int i = 0; i < resimler.length; i++) {
+			pathresimler[i] = "HaritaMarkerImage/" + resimler[i];
+
+		}
+
+		for (int a = 0; a < listkonum.size(); a++) {
+			try {
+				Konumlar konumum = listkonum.get(a);
+
+				LatLng latlng = new LatLng(Double.parseDouble(konumum
+						.getKonum_latitude()), Double.parseDouble(konumum
+						.getKonum_longitude()));
+
+				BitmapDescriptor icon = BitmapDescriptorFactory
+						.fromAsset(pathresimler[a]);
+				String title = konumum.getKonumadi();
+
+				// googleHarita.addMarker(new MarkerOptions().position(latlng)
+				// .icon(icon).title(title));
+				addMarkertoMap(latlng, icon, title);
+
+			} catch (Exception e) {
+				kutuphane.getAlertDialog(this, "Hata", "Konum Ekleme Hatasý !");
+
+			}
 		}
 
 	}
@@ -280,7 +374,8 @@ public class HaritaActivity extends FragmentActivity implements
 		// longitude = 27.180361;
 
 		LatLng ltlng = new LatLng(latitude, longitude);
-		HaritaGoster(ltlng);
+
+		// HaritaGoster(ltlng);
 
 	}
 
@@ -319,6 +414,73 @@ public class HaritaActivity extends FragmentActivity implements
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		locman.requestLocationUpdates(provider, 3000, 50, this);
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		locman.removeUpdates(this);
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+
+		kutuphane.stopFlurry(this);
+	}
+
+	@Override
+	public boolean onMarkerClick(Marker marker) {
+		// TODO Auto-generated method stub
+
+		String baslik = marker.getTitle();
+		LatLng latlng = marker.getPosition();
+		String position = Double.toString(latlng.latitude) + ","
+				+ Double.toString(latlng.longitude);
+		AlertDialogShow(baslik, "Yol tarifi ister misiniz ?", position);
+
+		return true;
+	}
+
+	private void AlertDialogShow(String title, String message,
+			final String position) {
+		AlertDialog.Builder build = new AlertDialog.Builder(this);
+		build.setTitle(title);
+		build.setMessage(message);
+
+		build.setPositiveButton("Evet", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				startNavi(position);
+			}
+		});
+		build.setNegativeButton("Hayýr", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
+
+		build.create().show();
+
+	}
+
+	private void startNavi(String position) {
+		Intent intent = new Intent(Intent.ACTION_VIEW,
+				Uri.parse("google.navigation:q=" + position));
+		startActivity(intent);
 	}
 
 }

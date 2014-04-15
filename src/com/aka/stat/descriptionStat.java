@@ -3,19 +3,17 @@ package com.aka.stat;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
-import android.R.array;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +25,6 @@ import android.widget.TextView;
 import com.deu.istatistik.Acilis;
 import com.deu.istatistik.Kutuphane;
 import com.deu.istatistik.R;
-import com.flurry.android.Constants;
-import com.flurry.android.FlurryAgent;
 
 public class descriptionStat extends Activity {
 
@@ -127,6 +123,14 @@ public class descriptionStat extends Activity {
 
 	}
 
+	
+	
+	private double calcOutlier(double[] degerler)
+	{
+		
+		return 0;
+	}
+	
 	private double calcRange(double[] degerler) {
 
 		double min = calcMin(degerler);
@@ -333,6 +337,15 @@ public class descriptionStat extends Activity {
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.menudescriptivestats, menu);
+
+		return super.onCreateOptionsMenu(menu);
+
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
@@ -344,6 +357,12 @@ public class descriptionStat extends Activity {
 
 			break;
 
+		case R.id.Regresyon:
+
+			break;
+		case R.id.Outlier:
+			
+			break;
 		default:
 			break;
 		}

@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements AnimationListener {
 
 				try {
 
-					sleep(4000);
+					sleep(0);
 					Intent intent = new Intent("com.deu.istatistik.ACILIS");
 					startActivity(intent);
 

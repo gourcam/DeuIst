@@ -137,7 +137,7 @@ public class TabloActivity extends Activity implements AnimationListener {
 		FlurryAgent.logEvent("Tablo Activity");
 
 		ActionBar actionBar = getActionBar();
-		actionBar.setSubtitle("Dokuz Eylül Üniversitesi");
+		actionBar.setSubtitle("Dokuz Eylï¿½l ï¿½niversitesi");
 		actionBar.setTitle("Tablolar");
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowHomeEnabled(true);
@@ -235,9 +235,9 @@ public class TabloActivity extends Activity implements AnimationListener {
 			final double x = Double.parseDouble(KulGiris.getText().toString());
 			if (x < 3.5) {
 				double z1 = Double.parseDouble(ztablo[(int) (x * 100)]
-						.substring(0, 4)); // Düþük olan z deðeri deðer
+						.substring(0, 4)); // Dï¿½ï¿½ï¿½k olan z deï¿½eri deï¿½er
 				double z2 = Double.parseDouble(ztablo[(int) (x * 100) + 1]
-						.substring(0, 4)); // Yüksek olan zdeðeri deðer;
+						.substring(0, 4)); // Yï¿½ksek olan zdeï¿½eri deï¿½er;
 				double y1 = Double.parseDouble(ztablo[(int) (x * 100)]
 						.substring(ztablo[(int) (x * 100)].length() - 6,
 								ztablo[(int) (x * 100)].length()));
@@ -248,9 +248,27 @@ public class TabloActivity extends Activity implements AnimationListener {
 				;
 				double sonuc = (y2 - y1) * (x - z1) / (z2 - z1);
 
-				kutuphane.getAlertDialog(this, "Sonuç : ",
-						Double.toString(sonuc + y1));
-
+				//Kontrol BaÅŸlangÄ±Ã§
+				if (Double.toString(sonuc+y1).length()>6) {
+					kutuphane.getAlertDialog(this, "SonuÃ§ : ",
+							Double.toString(sonuc + y1).substring(0, 6));
+				}
+				else {
+					kutuphane.getAlertDialog(this, "SonuÃ§ : ",
+							Double.toString(sonuc + y1));
+				}
+				
+				//Kontrol BitiÅŸ
+				
+				
+				//Eski Hali baÅŸlangÄ±Ã§
+				//tuphane.getAlertDialog(this, "Sonuï¿½ : ",
+				//Double.toString(sonuc + y1));
+				//deÄŸiÅŸtirilme nedeni: Ä°nterpolasyon hesaplamasÄ± yapÄ±tÄ±ÄŸÄ± iÃ§in Ã§ok kÃ¼Ã§Ã¼k sapmalar olabiliyor.
+				//Ã–rn : 1,657 iÃ§in, 0..1000000000000002 gibi bir deÄŸer geliyor. 
+				//Bu nedenle sayÄ±nÄ±n uzunluÄŸunun kontrol edilip ona gÃ¶re yazmasÄ± gerekiyor. DÃ¼zeldilmiÅŸ hali yukarda.
+				//Eski hali bitiÅŸ
+				
 				// /////////////////////
 				GraphView graphView = new BarGraphView(this, "");
 
@@ -326,13 +344,13 @@ public class TabloActivity extends Activity implements AnimationListener {
 			}
 
 			else {
-				kutuphane.getAlertDialog(this, "Sonuç : ",
+				kutuphane.getAlertDialog(this, "Sonuï¿½ : ",
 						Double.toString(0.4999));
 				// KulSonuc.setText("0.4999");
 			}
 		} catch (Exception e) {
 			kutuphane.getAlertDialog(this, "Hata",
-					"Lütfen doðru giriþ yaptýðýnýzdan emin olunuz.");
+					"Lï¿½tfen doï¿½ru giriï¿½ yaptï¿½ï¿½ï¿½nï¿½zdan emin olunuz.");
 		}
 
 	}
@@ -363,7 +381,7 @@ public class TabloActivity extends Activity implements AnimationListener {
 
 				String sonuc = satir[sutun];
 
-				kutuphane.getAlertDialog(this, "Sonuç : ", sonuc);
+				kutuphane.getAlertDialog(this, "Sonuï¿½ : ", sonuc);
 
 				// /////////////////////
 				GraphView graphView = new BarGraphView(this, "");
@@ -431,12 +449,12 @@ public class TabloActivity extends Activity implements AnimationListener {
 				layout.addView(graphView);
 
 			} else {
-				kutuphane.getAlertDialog(this, "Aralýk Hatasý",
-						"Lütfen 1 ile 30 arasýnda deðer giriniz");
+				kutuphane.getAlertDialog(this, "Aralï¿½k Hatasï¿½",
+						"Lï¿½tfen 1 ile 30 arasï¿½nda deï¿½er giriniz");
 			}
 		} catch (Exception ex) {
-			kutuphane.getAlertDialog(this, "Giriþ Hatasý",
-					"Tablo deðerleri dýþýnda deðer girdiniz.");
+			kutuphane.getAlertDialog(this, "Giriï¿½ Hatasï¿½",
+					"Tablo deï¿½erleri dï¿½ï¿½ï¿½nda deï¿½er girdiniz.");
 		}
 
 	}
@@ -457,15 +475,15 @@ public class TabloActivity extends Activity implements AnimationListener {
 
 				String sonuc = satir[sutun];
 
-				kutuphane.getAlertDialog(this, "Sonuç : ", sonuc);
+				kutuphane.getAlertDialog(this, "Sonuï¿½ : ", sonuc);
 
 			} else {
-				kutuphane.getAlertDialog(this, "Aralýk Hatasý",
-						"Lütfen 1 ile 30 arasýnda deðer giriniz");
+				kutuphane.getAlertDialog(this, "Aralï¿½k Hatasï¿½",
+						"Lï¿½tfen 1 ile 30 arasï¿½nda deï¿½er giriniz");
 			}
 		} catch (Exception ex) {
-			kutuphane.getAlertDialog(this, "Giriþ Hatasý",
-					"Tablo deðerleri dýþýnda deðer girdiniz.");
+			kutuphane.getAlertDialog(this, "Giriï¿½ Hatasï¿½",
+					"Tablo deï¿½erleri dï¿½ï¿½ï¿½nda deï¿½er girdiniz.");
 		}
 	}
 
@@ -485,15 +503,15 @@ public class TabloActivity extends Activity implements AnimationListener {
 
 				String sonuc = satir[sutun];
 
-				kutuphane.getAlertDialog(this, "Sonuç : ", sonuc);
+				kutuphane.getAlertDialog(this, "Sonuï¿½ : ", sonuc);
 
 			} else {
-				kutuphane.getAlertDialog(this, "Aralýk Hatasý",
-						"Lütfen 1 ile 30 arasýnda deðer giriniz");
+				kutuphane.getAlertDialog(this, "Aralï¿½k Hatasï¿½",
+						"Lï¿½tfen 1 ile 30 arasï¿½nda deï¿½er giriniz");
 			}
 		} catch (Exception ex) {
-			kutuphane.getAlertDialog(this, "Giriþ Hatasý",
-					"Tablo deðerleri dýþýnda deðer girdiniz.");
+			kutuphane.getAlertDialog(this, "Giriï¿½ Hatasï¿½",
+					"Tablo deï¿½erleri dï¿½ï¿½ï¿½nda deï¿½er girdiniz.");
 		}
 
 	}
@@ -514,15 +532,15 @@ public class TabloActivity extends Activity implements AnimationListener {
 
 				String sonuc = satir[sutun];
 
-				kutuphane.getAlertDialog(this, "Sonuç : ", sonuc);
+				kutuphane.getAlertDialog(this, "Sonuï¿½ : ", sonuc);
 
 			} else {
-				kutuphane.getAlertDialog(this, "Aralýk Hatasý",
-						"Lütfen 1 ile 30 arasýnda deðer giriniz");
+				kutuphane.getAlertDialog(this, "Aralï¿½k Hatasï¿½",
+						"Lï¿½tfen 1 ile 30 arasï¿½nda deï¿½er giriniz");
 			}
 		} catch (Exception ex) {
-			kutuphane.getAlertDialog(this, "Giriþ Hatasý",
-					"Tablo deðerleri dýþýnda deðer girdiniz.");
+			kutuphane.getAlertDialog(this, "Giriï¿½ Hatasï¿½",
+					"Tablo deï¿½erleri dï¿½ï¿½ï¿½nda deï¿½er girdiniz.");
 		}
 
 	}
@@ -544,15 +562,15 @@ public class TabloActivity extends Activity implements AnimationListener {
 
 				String sonuc = satir[sutun];
 
-				kutuphane.getAlertDialog(this, "Sonuç : ", sonuc);
+				kutuphane.getAlertDialog(this, "Sonuï¿½ : ", sonuc);
 
 			} else {
-				kutuphane.getAlertDialog(this, "Aralýk Hatasý",
-						"Lütfen 1 ile 30 arasýnda deðer giriniz");
+				kutuphane.getAlertDialog(this, "Aralï¿½k Hatasï¿½",
+						"Lï¿½tfen 1 ile 30 arasï¿½nda deï¿½er giriniz");
 			}
 		} catch (Exception ex) {
-			kutuphane.getAlertDialog(this, "Giriþ Hatasý",
-					"Lütfen 1 ile 30 arasýnda deðer giriniz");
+			kutuphane.getAlertDialog(this, "Giriï¿½ Hatasï¿½",
+					"Lï¿½tfen 1 ile 30 arasï¿½nda deï¿½er giriniz");
 		}
 
 	}
